@@ -1,9 +1,21 @@
 plugins {
-    id 'java'
+    id 'application'
 }
 
 group = 'hexlet.code'
 version = '1.0-SNAPSHOT'
+
+compileJava {
+    options.release = 20
+}
+
+application {
+    mainClass = 'hexlet.code.App'
+}
+
+run {
+    standardInput = System.in
+}
 
 repositories {
     mavenCentral()
