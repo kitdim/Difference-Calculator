@@ -25,6 +25,8 @@ dependencies {
     testImplementation platform('org.junit:junit-bom:5.9.1')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     implementation 'info.picocli:picocli:4.7.4'
+    // https://central.sonatype.com/artifact/com.fasterxml.jackson.core/jackson-databind/2.15.2
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.15.2'
 }
 
 test {
