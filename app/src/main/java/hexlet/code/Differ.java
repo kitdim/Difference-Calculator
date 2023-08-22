@@ -1,6 +1,5 @@
 package hexlet.code;
 
-import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
@@ -20,11 +19,12 @@ public class Differ {
                     && !data1.get(key).equals(data2.get(key))) {
                 result.append("  - " + key + ": " + data1.get(key) + "\n");
                 result.append("  + " + key + ": " + data2.get(key) + "\n");
-            } else if(!data1.containsKey(key)
+            } else if (!data1.containsKey(key)
                     && data2.containsKey(key)) {
                 result.append("  + " + key + ": " + data2.get(key) + "\n");
-            } else
+            } else {
                 result.append("  - " + key + ": " + data1.get(key) + "\n");
+            }
         }
         result.append("}");
         return result.toString();
