@@ -1,2 +1,3 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/kitdim/java-project-71/workflows/hexlet-check/badge.svg)](https://github.com/kitdim/java-project-71/actions)
+[![Maintainability](https://api.codeclimate.com/v1/badges/bd38b1474a43a5fd696e/maintainability)](https://codeclimate.com/github/kitdim/java-project-71/maintainability)
