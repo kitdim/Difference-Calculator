@@ -19,7 +19,7 @@ test:
 	make -C app test
 
 report:
-	make -C app report
+	./gradlew test jacocoTestReport
 
 lint:
 	make -C app lint
