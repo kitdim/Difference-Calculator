@@ -1,18 +1,12 @@
 package hexlet.code;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Map;
+import java.io.IOException;
 import java.util.concurrent.Callable;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Command(name = "gendiff", mixinStandardHelpOptions = true,
         description = "Compares two configuration files and shows a difference.")
@@ -28,23 +22,10 @@ public class App implements Callable<Integer> {
     private String format;
 
     @Override
-    public Integer call() throws Exception {
-        ObjectMapper objectMapper = new ObjectMapper();
-        Path path1 = Paths.get(filepath1).toAbsolutePath().normalize();
-        Path path2 = Paths.get(filepath2).toAbsolutePath().normalize();
-        if (!Files.exists(path1)) {
-            throw new Exception("File '" + path1 + "' does not exist");
-        }
-        if (!Files.exists(path2)) {
-            throw new Exception("File '" + path2 + "' does not exist");
-        }
-        String json1 = Files.readString(path1);
-        String json2 = Files.readString(path2);
-        Map<String, Object> data1 = objectMapper.readValue(json1, new TypeReference<>() {
-        });
-        Map<String, Object> data2 = objectMapper.readValue(json2, new TypeReference<>() {
-        });
-        System.out.println(Differ.generate(data1, data2));
+    public Integer call() throws IOException {
+        Parser parser = new Parser(filepath1, filepath2);
+        parser.parse();
+        System.out.println(Differ.generate(parser.getData1(), parser.getData2()));
         return 0;
     }
 
