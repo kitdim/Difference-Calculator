@@ -2,33 +2,40 @@ package hexlet.code;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Map;
+import java.io.IOException;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 
 public class DifferTest {
 
     @Test
     public void test1() throws Exception {
-        ObjectMapper objectMapper = new ObjectMapper();
-        String filepath1 = "src/test/resources/file1.json";
-        String filepath2 = "src/test/resources/file2.json";
+        String filepath1 = "src/test/resources/Json/file1.json";
+        String filepath2 = "src/test/resources/Json/file2.json";
+        Parser parser = new Parser(filepath1, filepath2);
+        parser.parse();
 
-        Path path1 = Paths.get(filepath1).toAbsolutePath().normalize();
-        Path path2 = Paths.get(filepath2).toAbsolutePath().normalize();
-        String json1 = Files.readString(path1);
-        String json2 = Files.readString(path2);
-        Map<String, Object> data1 = objectMapper.readValue(json1, new TypeReference<>() {
-        });
-        Map<String, Object> data2 = objectMapper.readValue(json2, new TypeReference<>() {
-        });
-        var actual = Differ.generate(data1, data2);
+        var actual = Differ.generate(parser.getData1(), parser.getData2());
+        String expect = """
+                {
+                  - follow: false
+                    host: hexlet.io
+                  - proxy: 123.234.53.22
+                  - timeout: 50
+                  + timeout: 20
+                  + verbose: true
+                }""";
+        assertThat(expect).isEqualTo(actual);
+    }
+
+    @Test
+    public void test2() throws IOException {
+        String filepath1 = "src/test/resources/Yml/file1.yml";
+        String filepath2 = "src/test/resources/Yml/file2.yml";
+        Parser parser = new Parser(filepath1, filepath2);
+        parser.parse();
+
+        var actual = Differ.generate(parser.getData1(), parser.getData2());
         String expect = """
                 {
                   - follow: false
