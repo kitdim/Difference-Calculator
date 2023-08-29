@@ -5,3 +5,5 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/bd38b1474a43a5fd696e/test_coverage)](https://codeclimate.com/github/kitdim/java-project-71/test_coverage)
 ### Example 7
 [![asciicast](https://asciinema.org/a/604905.svg)](https://asciinema.org/a/604905)
+### Example 8
+[![asciicast](https://asciinema.org/a/605294.svg)](https://asciinema.org/a/605294)
