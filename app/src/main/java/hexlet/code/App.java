@@ -18,14 +18,14 @@ public class App implements Callable<Integer> {
     //private Path filepath2 = Paths.get("/tmp/file.txt").toAbsolutePath();
     String filepath2;
 
-    @Option(names = {"-f", "--format"}, paramLabel = "format", description = "output format [default: stylish]")
+    @Option(names = {"-f", "--format"}, defaultValue = "stylish", paramLabel = "format", description = "output format [default: stylish]")
     private String format;
 
     @Override
     public Integer call() throws IOException {
         Parser parser = new Parser(filepath1, filepath2);
         parser.parse();
-        System.out.println(Differ.generate(parser.getData1(), parser.getData2()));
+        System.out.println(Differ.generate(parser.getData1(), parser.getData2(), format));
         return 0;
     }
 
