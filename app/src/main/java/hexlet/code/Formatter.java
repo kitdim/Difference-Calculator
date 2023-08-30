@@ -1,5 +1,8 @@
 package hexlet.code;
 
+import hexlet.code.formatters.Plain;
+import hexlet.code.formatters.Stylish;
+
 import java.util.List;
 
 public class Formatter {
@@ -11,14 +14,12 @@ public class Formatter {
         this.format = format;
     }
 
-    public String getFormat() {
+    public String getResult() {
         switch (format) {
             case "stylish":
-                StringBuilder result = new StringBuilder("{\n");
-                for (var item : differ) {
-                    result.append(item).append("\n");
-                }
-                return result.append("}").toString();
+                return Stylish.getFormatter(differ);
+            case "plain":
+                return Plain.getFormatter(differ);
             default:
                 throw new RuntimeException(format + " not supported.");
         }
