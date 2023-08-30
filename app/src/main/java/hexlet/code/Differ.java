@@ -10,20 +10,20 @@ public class Differ {
         for (var key : keys) {
             if (data1.containsKey(key)
                     && Objects.equals(data1.get(key), data2.get(key))) {
-                differ.add("    " + key + ": " + data1.get(key));
+                differ.add(" " + "|" + key + "|" + data1.get(key) + "|" + data2.get(key));
             } else if (data1.containsKey(key)
                     && data2.containsKey(key)
                     && !Objects.equals(data1.get(key), data2.get(key))) {
-                differ.add("  - " + key + ": " + data1.get(key));
-                differ.add("  + " + key + ": " + data2.get(key));
+                differ.add("-" + "|" + key + "|" + data1.get(key) + "|" + data2.get(key));
+                differ.add("+" + "|" + key + "|" + data2.get(key) + "|" + data1.get(key) + "|" + "update");
             } else if (!data1.containsKey(key)
                     && data2.containsKey(key)) {
-                differ.add("  + " + key + ": " + data2.get(key));
+                differ.add("+" + "|" + key + "|" + data2.get(key) + "|" + data1.get(key) + "|" + "added");
             } else {
-                differ.add("  - " + key + ": " + data1.get(key));
+                differ.add("-" + "|" + key + "|" + data1.get(key) + "|" + data2.get(key) + "|" + "remove");
             }
         }
         Formatter formatter = new Formatter(differ, format);
-        return formatter.getFormat();
+        return formatter.getResult();
     }
 }
