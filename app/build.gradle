@@ -46,15 +46,3 @@ jacocoTestReport {
         xml.required = true
     }
 }
-
-checkstyle {
-    toolVersion = '10.3.3'
-}
-
-checkstyleMain {
-    source ='app/src/main/java'
-}
-
-checkstyleTest {
-    source ='app/src/test/java'
-}
