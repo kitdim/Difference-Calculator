@@ -41,7 +41,7 @@ public class Parser {
             case "yml" -> {
                 return new YAMLMapper();
             }
-            default -> throw new IOException();
+            default -> throw new RuntimeException();
         }
     }
 
