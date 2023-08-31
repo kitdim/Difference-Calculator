@@ -1,6 +1,7 @@
 package hexlet.code.formatters;
 
 import java.util.List;
+
 import org.apache.commons.lang3.StringUtils;
 
 public class Plain {
@@ -31,6 +32,8 @@ public class Plain {
                         .append(" to ")
                         .append(getValue(items[2]))
                         .append("\n");
+                default -> {
+                }
             }
         }
         return result.toString();

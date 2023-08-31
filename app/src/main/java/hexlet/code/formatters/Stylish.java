@@ -24,6 +24,7 @@ public class Stylish {
                         .append(": ")
                         .append(items[2])
                         .append("\n");
+                default -> throw new RuntimeException();
             }
         }
         return result.append("}").toString();
