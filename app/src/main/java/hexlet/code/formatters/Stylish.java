@@ -9,27 +9,21 @@ public class Stylish {
             String[] items = item.split("\\|");
             String optional = items[0];
             switch (optional) {
-                case "+":
-                    result.append("  + ")
-                            .append(items[1])
-                            .append(": ")
-                            .append(items[2])
-                            .append("\n");
-                    break;
-                case "-":
-                    result.append("  - ")
-                            .append(items[1])
-                            .append(": ")
-                            .append(items[2])
-                            .append("\n");
-                    break;
-                case " ":
-                    result.append("    ")
-                            .append(items[1])
-                            .append(": ")
-                            .append(items[2])
-                            .append("\n");
-                    break;
+                case "+" -> result.append("  + ")
+                        .append(items[1])
+                        .append(": ")
+                        .append(items[2])
+                        .append("\n");
+                case "-" -> result.append("  - ")
+                        .append(items[1])
+                        .append(": ")
+                        .append(items[2])
+                        .append("\n");
+                case " " -> result.append("    ")
+                        .append(items[1])
+                        .append(": ")
+                        .append(items[2])
+                        .append("\n");
             }
         }
         return result.append("}").toString();

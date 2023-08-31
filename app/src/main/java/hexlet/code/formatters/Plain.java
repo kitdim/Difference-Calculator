@@ -1,6 +1,7 @@
 package hexlet.code.formatters;
 
 import java.util.List;
+import org.apache.commons.lang3.StringUtils;
 
 public class Plain {
     public static String getFormatter(List<String> diff) {
@@ -19,22 +20,31 @@ public class Plain {
                         .append(items[1])
                         .append("'")
                         .append(" was added with value: ")
-                        .append(items[2])
+                        .append(getValue(items[2]))
                         .append("\n");
                 case "update" -> result.append("Property ")
                         .append("'")
                         .append(items[1])
                         .append("'")
                         .append(" was updated. From ")
-                        .append(items[3])
+                        .append(getValue(items[3]))
                         .append(" to ")
-                        .append(items[2])
+                        .append(getValue(items[2]))
                         .append("\n");
             }
         }
         return result.toString();
     }
-    public static String getValue(String value) {
-        return null;
+
+    private static String getValue(String value) {
+        if (value.charAt(0) == '[' && value.charAt(value.length() - 1) == ']'
+                || value.charAt(0) == '{' && value.charAt(value.length() - 1) == '}') {
+            return "[complex value]";
+        } else if (value.equals("false") || value.equals("true")
+                || value.equals("null") || StringUtils.isNumeric(value)) {
+            return value;
+        } else {
+            return "'" + value + "'";
+        }
     }
 }
