@@ -1,5 +1,6 @@
 package hexlet.code;
 
+import hexlet.code.formatters.Json;
 import hexlet.code.formatters.Plain;
 import hexlet.code.formatters.Stylish;
 
@@ -20,6 +21,8 @@ public class Formatter {
                 return Stylish.getFormatter(differ);
             case "plain":
                 return Plain.getFormatter(differ);
+            case "json":
+                return Json.getFormatter(differ);
             default:
                 throw new RuntimeException(format + " not supported.");
         }
