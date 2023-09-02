@@ -9,3 +9,5 @@
 [![asciicast](https://asciinema.org/a/605294.svg)](https://asciinema.org/a/605294)
 ### Example 9
 [![asciicast](https://asciinema.org/a/605693.svg)](https://asciinema.org/a/605693)
+### Example 10
+[![asciicast](https://asciinema.org/a/605983.svg)](https://asciinema.org/a/605983)
