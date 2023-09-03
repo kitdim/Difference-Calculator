@@ -7,22 +7,14 @@ import hexlet.code.formatters.Stylish;
 import java.util.List;
 
 public class Formatter {
-    String format;
-    List<String> differ;
-
-    Formatter(List<String> differ, String format) {
-        this.differ = differ;
-        this.format = format;
-    }
-
-    public String getResult() {
+    public static String formating(List<String> data, String format) {
         switch (format) {
             case "stylish":
-                return Stylish.getFormatter(differ);
+                return Stylish.getFormatter(data);
             case "plain":
-                return Plain.getFormatter(differ);
+                return Plain.getFormatter(data);
             case "json":
-                return Json.getFormatter(differ);
+                return Json.getFormatter(data);
             default:
                 throw new RuntimeException(format + " not supported.");
         }

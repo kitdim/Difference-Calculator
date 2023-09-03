@@ -10,7 +10,7 @@ import java.util.TreeSet;
 
 
 public class Differ {
-    public static String generate(Map<String, Object> data1, Map<String, Object> data2, String format) {
+    public static List<String> generate(Map<String, Object> data1, Map<String, Object> data2) {
         List<String> differ = new LinkedList<>();
         Set<String> keys = new TreeSet<>(data1.keySet());
         keys.addAll(data2.keySet());
@@ -30,7 +30,6 @@ public class Differ {
                 differ.add("-" + "|" + key + "|" + data1.get(key) + "|" + data2.get(key) + "|" + "remove");
             }
         }
-        Formatter formatter = new Formatter(differ, format);
-        return formatter.getResult();
+        return differ;
     }
 }

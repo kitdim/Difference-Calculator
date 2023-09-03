@@ -25,7 +25,9 @@ public class App implements Callable<Integer> {
     public Integer call() throws IOException {
         Parser parser = new Parser(filepath1, filepath2);
         parser.parse();
-        System.out.println(Differ.generate(parser.getData1(), parser.getData2(), format));
+        var data = Differ.generate(parser.getData1(), parser.getData2());
+        var result = Formatter.formating(data, format);
+        System.out.println(result);
         return 0;
     }
 

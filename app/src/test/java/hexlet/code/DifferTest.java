@@ -3,6 +3,7 @@ package hexlet.code;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,6 +13,7 @@ public class DifferTest {
     String expectRec = "";
     String expectPlain = "";
     String expectJson = "";
+    String[] formatters;
 
     @BeforeEach
     public void initExpect() {
@@ -94,71 +96,42 @@ public class DifferTest {
                   "setting3": true,
                   "setting3": "none"
                 }""";
+        formatters = new String[]{"stylish", "plain", "json"};
     }
 
     @Test
-    public void testStylishJson() throws Exception {
-        String filepath1 = "src/test/resources/Json/file1.json";
-        String filepath2 = "src/test/resources/Json/file2.json";
-        Parser parser = new Parser(filepath1, filepath2);
-        parser.parse();
-
-        var actual = Differ.generate(parser.getData1(), parser.getData2(), "stylish");
-        assertThat(actual).isEqualTo(expect);
-    }
-
-    @Test
-    public void testStylishYml() throws IOException {
-        String filepath1 = "src/test/resources/Yml/file1.yml";
-        String filepath2 = "src/test/resources/Yml/file2.yml";
-        Parser parser = new Parser(filepath1, filepath2);
-        parser.parse();
-
-        var actual = Differ.generate(parser.getData1(), parser.getData2(), "stylish");
-        assertThat(actual).isEqualTo(expect);
-    }
-
-    @Test
-    public void testStylishJsonRec() throws IOException {
-        String filepath1 = "src/test/resources/Json/file3.json";
-        String filepath2 = "src/test/resources/Json/file4.json";
-        Parser parser = new Parser(filepath1, filepath2);
-        parser.parse();
-
-        var actual = Differ.generate(parser.getData1(), parser.getData2(), "stylish");
-        assertThat(actual).isEqualTo(expectRec);
-    }
-
-    @Test
-    public void testStylishYmlRec() throws IOException {
-        String filepath1 = "src/test/resources/Yml/file3.yml";
-        String filepath2 = "src/test/resources/Yml/file4.yml";
-        Parser parser = new Parser(filepath1, filepath2);
-        parser.parse();
-
-        var actual = Differ.generate(parser.getData1(), parser.getData2(), "stylish");
-        assertThat(actual).isEqualTo(expectRec);
-    }
-
-    @Test
-    public void testPlainJson() throws IOException {
-        String filepath1 = "src/test/resources/Json/file3.json";
-        String filepath2 = "src/test/resources/Json/file4.json";
-        Parser parser = new Parser(filepath1, filepath2);
-        parser.parse();
-
-        var actual = Differ.generate(parser.getData1(), parser.getData2(), "plain");
-        assertThat(actual).isEqualTo(expectPlain);
-    }
-
-    @Test
-    public void testJson() throws IOException {
-        String filepath1 = "src/test/resources/Json/file3.json";
-        String filepath2 = "src/test/resources/Json/file4.json";
-        Parser parser = new Parser(filepath1, filepath2);
-        parser.parse();
-
-        var actual = Differ.generate(parser.getData1(), parser.getData2(), "json");
-        assertThat(actual).isEqualTo(expectJson);
+    public void fullTest() throws IOException {
+        String filepath1;
+        String filepath2;
+        Parser parser;
+        List<String> data;
+        String actual;
+        for (var format : formatters) {
+            if (format.equals("stylish")) {
+                filepath1 = "src/test/resources/Json/file1.json";
+                filepath2 = "src/test/resources/Json/file2.json";
+                parser = new Parser(filepath1, filepath2);
+                parser.parse();
+                data = Differ.generate(parser.getData1(), parser.getData2());
+                actual = Formatter.formating(data, "stylish");
+                assertThat(actual).isEqualTo(expect);
+            } else if (format.equals("plain")) {
+                filepath1 = "src/test/resources/Json/file3.json";
+                filepath2 = "src/test/resources/Json/file4.json";
+                parser = new Parser(filepath1, filepath2);
+                parser.parse();
+                data = Differ.generate(parser.getData1(), parser.getData2());
+                actual = Formatter.formating(data, "plain");
+                assertThat(actual).isEqualTo(expectPlain);
+            } else {
+                filepath1 = "src/test/resources/Json/file3.json";
+                filepath2 = "src/test/resources/Json/file4.json";
+                parser = new Parser(filepath1, filepath2);
+                parser.parse();
+                data = Differ.generate(parser.getData1(), parser.getData2());
+                actual = Formatter.formating(data, "json");
+                assertThat(actual).isEqualTo(expectJson);
+            }
+        }
     }
 }
