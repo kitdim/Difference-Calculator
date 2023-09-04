@@ -1,5 +1,8 @@
-package hexlet.code.utils;
+package hexlet.code;
 
+
+import hexlet.code.utils.Formatter;
+import hexlet.code.utils.Parser;
 
 import java.io.IOException;
 
