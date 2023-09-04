@@ -11,6 +11,6 @@ public class Differ {
         var data2 = parser.getData2();
         var differ = DifferBuild.getDiffer(data1, data2);
 
-        return Formatter.formating(differ, format);
+        return Formatter.formatting(differ, format);
     }
 }
