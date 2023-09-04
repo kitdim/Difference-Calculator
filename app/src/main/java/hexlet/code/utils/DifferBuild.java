@@ -1,5 +1,4 @@
-package hexlet.code;
-
+package hexlet.code.utils;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -8,9 +7,8 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
 
-
-public class Differ {
-    public static List<String> generate(Map<String, Object> data1, Map<String, Object> data2) {
+public class DifferBuild {
+    public static List<String> getDiffer(Map<String, Object> data1, Map<String, Object> data2) {
         List<String> differ = new LinkedList<>();
         Set<String> keys = new TreeSet<>(data1.keySet());
         keys.addAll(data2.keySet());
