@@ -3,8 +3,8 @@ package hexlet.code;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.IOException;
-import java.util.List;
 
+import hexlet.code.utils.Differ;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -103,33 +103,22 @@ public class DifferTest {
     public void fullTest() throws IOException {
         String filepath1;
         String filepath2;
-        Parser parser;
-        List<String> data;
         String actual;
         for (var format : formatters) {
             if (format.equals("stylish")) {
                 filepath1 = "src/test/resources/Json/file1.json";
                 filepath2 = "src/test/resources/Json/file2.json";
-                parser = new Parser(filepath1, filepath2);
-                parser.parse();
-                data = Differ.generate(parser.getData1(), parser.getData2());
-                actual = Formatter.formating(data, "stylish");
+                actual = Differ.generate(filepath1, filepath2, "stylish");
                 assertThat(actual).isEqualTo(expect);
             } else if (format.equals("plain")) {
                 filepath1 = "src/test/resources/Json/file3.json";
                 filepath2 = "src/test/resources/Json/file4.json";
-                parser = new Parser(filepath1, filepath2);
-                parser.parse();
-                data = Differ.generate(parser.getData1(), parser.getData2());
-                actual = Formatter.formating(data, "plain");
+                actual = Differ.generate(filepath1, filepath2, "plain");
                 assertThat(actual).isEqualTo(expectPlain);
             } else {
                 filepath1 = "src/test/resources/Json/file3.json";
                 filepath2 = "src/test/resources/Json/file4.json";
-                parser = new Parser(filepath1, filepath2);
-                parser.parse();
-                data = Differ.generate(parser.getData1(), parser.getData2());
-                actual = Formatter.formating(data, "json");
+                actual = Differ.generate(filepath1, filepath2, "json");
                 assertThat(actual).isEqualTo(expectJson);
             }
         }
