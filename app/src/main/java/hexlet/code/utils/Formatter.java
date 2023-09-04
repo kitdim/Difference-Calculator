@@ -1,4 +1,4 @@
-package hexlet.code;
+package hexlet.code.utils;
 
 import hexlet.code.formatters.Json;
 import hexlet.code.formatters.Plain;
@@ -7,7 +7,7 @@ import hexlet.code.formatters.Stylish;
 import java.util.List;
 
 public class Formatter {
-    public static String formating(List<String> data, String format) {
+    public static String formatting(List<String> data, String format) {
         switch (format) {
             case "stylish":
                 return Stylish.getFormatter(data);

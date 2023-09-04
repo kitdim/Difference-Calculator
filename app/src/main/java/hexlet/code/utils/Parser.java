@@ -1,4 +1,4 @@
-package hexlet.code;
+package hexlet.code.utils;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -32,7 +32,7 @@ public class Parser {
         });
     }
 
-    private ObjectMapper factoryMapper() throws IOException {
+    private ObjectMapper factoryMapper() {
         String type = String.valueOf(filepath1).split("\\.")[1];
         switch (type) {
             case "json" -> {
