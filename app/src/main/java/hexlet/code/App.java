@@ -22,11 +22,8 @@ public class App implements Callable<Integer> {
     String filepath2;
 
     @Override
-    public Integer call() throws IOException {
-        Parser parser = new Parser(filepath1, filepath2);
-        parser.parse();
-        var data = Differ.generate(parser.getData1(), parser.getData2());
-        var result = Formatter.formating(data, format);
+    public Integer call() {
+        var result = Differ.generate(filepath1, filepath2, format);
         System.out.println(result);
         return 0;
     }
