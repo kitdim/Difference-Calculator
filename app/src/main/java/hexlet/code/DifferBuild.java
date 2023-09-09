@@ -1,6 +1,10 @@
 package hexlet.code;
 
-import java.util.*;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 public class DifferBuild {
     public static Map<String, LineDiff> getDiffer(Map<String, Object> data1, Map<String, Object> data2) {

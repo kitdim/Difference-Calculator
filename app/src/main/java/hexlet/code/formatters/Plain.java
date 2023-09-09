@@ -36,6 +36,8 @@ public class Plain {
                         .append(key).append("'")
                         .append(" was removed")
                         .append("\n");
+                default -> {
+                }
             }
         }
         return result.toString();
