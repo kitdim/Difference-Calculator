@@ -28,4 +28,14 @@ public class LineDiff {
     public Object getValue2() {
         return value2;
     }
+
+    @Override
+    public String toString() {
+        return "LineDiff{" +
+                "status='" + status + '\'' +
+                ", key='" + key + '\'' +
+                ", value1=" + value1 +
+                ", value2=" + value2 +
+                '}';
+    }
 }

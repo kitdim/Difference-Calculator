@@ -1,32 +1,58 @@
 package hexlet.code.formatters;
 
+import hexlet.code.LineDiff;
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 public class Json {
 
-    public static String getFormatter(List<String> differ) {
+    public static String getFormatter(Map<String, LineDiff> data) {
         StringBuilder result = new StringBuilder("{\n");
-        int count = 0;
-        for (var item : differ) {
-            String[] items = item.split("\\|");
-            result.append("  ")
-                    .append("\"")
-                    .append(items[1])
-                    .append("\"")
-                    .append(": ")
-                    .append(getValue(items[2]))
-                    .append(count == differ.size() - 1 ? "\n" : ",\n");
-            count++;
+        var size = data.entrySet().size();
+        var index = 0;
+        for (var item : data.entrySet()) {
+            var status = item.getValue().getStatus();
+            var value1 = item.getValue().getValue1();
+            var value2 = item.getValue().getValue2();
+            var key = item.getValue().getKey();
+            switch (status) {
+                case "changed" -> {
+                    result.append("  ")
+                            .append(formatting(key))
+                            .append(": ")
+                            .append(formatting(value1));
+                    result.append(",\n");
+                    result.append("  ")
+                            .append(formatting(key))
+                            .append(": ")
+                            .append(formatting(value2));
+                }
+                case "added" -> result.append("  ")
+                        .append(formatting(key))
+                        .append(": ")
+                        .append(formatting(value2));
+                default -> result.append("  ")
+                        .append(formatting(key))
+                        .append(": ")
+                        .append(formatting(value1));
+            }
+            index++;
+            if (index == size) {
+                result.append("\n");
+            } else {
+                result.append(",\n");
+            }
         }
         return result.append("}").toString();
     }
 
-    private static String getValue(String value) {
-        if (value.charAt(0) == '{' && value.charAt(value.length() - 1) == '}') {
+    private static String formatting(Object value) {
+        var tempVal = Objects.toString(value);
+        if (tempVal.charAt(0) == '{' && tempVal.charAt(tempVal.length() - 1) == '}') {
             StringBuilder result = new StringBuilder("{\n");
-            String[] words = value.trim()
+            String[] words = tempVal.trim()
                     .replace("{", "")
                     .replace("}", "")
                     .replace("=", ": ")
@@ -56,9 +82,9 @@ public class Json {
                 count++;
             }
             return result.toString();
-        } else if (value.charAt(0) == '[' && value.charAt(value.length() - 1) == ']') {
+        } else if (tempVal.charAt(0) == '[' && tempVal.charAt(tempVal.length() - 1) == ']') {
             StringBuilder result = new StringBuilder("[");
-            String[] words = value.trim()
+            String[] words = tempVal.trim()
                     .replace("[", "")
                     .replace("]", "")
                     .split(",");
@@ -80,13 +106,13 @@ public class Json {
             }
             return result.toString();
         } else {
-            if (StringUtils.isNumeric(value)
-                    || value.equals("null")
-                    || value.equals("true")
-                    || value.equals("false")) {
-                return value;
+            if (StringUtils.isNumeric(tempVal)
+                    || tempVal.equals("null")
+                    || tempVal.equals("true")
+                    || tempVal.equals("false")) {
+                return tempVal;
             } else {
-                return "\"" + value + "\"";
+                return "\"" + tempVal + "\"";
             }
         }
     }

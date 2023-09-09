@@ -1,51 +1,54 @@
 package hexlet.code.formatters;
 
-import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
+import hexlet.code.LineDiff;
 import org.apache.commons.lang3.StringUtils;
 
 public class Plain {
-    public static String getFormatter(List<String> diff) {
+    public static String getFormatter(Map<String, LineDiff> data) {
         StringBuilder result = new StringBuilder();
-        for (var item : diff) {
-            String[] items = item.split("\\|");
-            String optional = items[items.length - 1];
-            switch (optional) {
-                case "remove" -> result.append("Property ")
+        for (var item : data.entrySet()) {
+            var status = item.getValue().getStatus();
+            var value1 = item.getValue().getValue1();
+            var value2 = item.getValue().getValue2();
+            var key = item.getValue().getKey();
+            switch (status) {
+                case "changed" -> result.append("Property ")
                         .append("'")
-                        .append(items[1]).append("'")
-                        .append(" was removed")
+                        .append(key)
+                        .append("'")
+                        .append(" was updated. From ")
+                        .append(getValue(value1))
+                        .append(" to ")
+                        .append(getValue(value2))
                         .append("\n");
                 case "added" -> result.append("Property ")
                         .append("'")
-                        .append(items[1])
+                        .append(key)
                         .append("'")
                         .append(" was added with value: ")
-                        .append(getValue(items[2]))
+                        .append(getValue(value2))
                         .append("\n");
-                case "update" -> result.append("Property ")
+                case "remove" -> result.append("Property ")
                         .append("'")
-                        .append(items[1])
-                        .append("'")
-                        .append(" was updated. From ")
-                        .append(getValue(items[3]))
-                        .append(" to ")
-                        .append(getValue(items[2]))
+                        .append(key).append("'")
+                        .append(" was removed")
                         .append("\n");
-                default -> {
-                }
             }
         }
         return result.toString();
     }
 
-    private static String getValue(String value) {
-        if (value.charAt(0) == '[' && value.charAt(value.length() - 1) == ']'
-                || value.charAt(0) == '{' && value.charAt(value.length() - 1) == '}') {
+    private static String getValue(Object value) {
+        var tempVal = Objects.toString(value);
+        if (tempVal.charAt(0) == '[' && tempVal.charAt(tempVal.length() - 1) == ']'
+                || tempVal.charAt(0) == '{' && tempVal.charAt(tempVal.length() - 1) == '}') {
             return "[complex value]";
-        } else if (value.equals("false") || value.equals("true")
-                || value.equals("null") || StringUtils.isNumeric(value)) {
-            return value;
+        } else if (tempVal.equals("false") || tempVal.equals("true")
+                || tempVal.equals("null") || StringUtils.isNumeric(tempVal)) {
+            return tempVal;
         } else {
             return "'" + value + "'";
         }
