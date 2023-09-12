@@ -9,7 +9,7 @@ public class ParserFactory {
             case "yml" -> {
                 return new YmlParser();
             }
-            default -> throw new RuntimeException();
+            default -> throw new RuntimeException(format + " - format not supported.");
         }
     }
 }
