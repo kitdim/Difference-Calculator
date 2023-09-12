@@ -46,7 +46,7 @@ public class Stylish {
                     result.append(value1);
                     result.append("\n");
                 }
-                default -> throw new RuntimeException();
+                default -> throw new RuntimeException(status + " - status not supported.");
             }
         }
         return result.append("}").toString();
