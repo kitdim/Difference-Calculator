@@ -6,7 +6,7 @@ import hexlet.code.LineDiff;
 
 import java.util.Map;
 
-public class Json {
+public final class Json {
     public static String getFormatter(Map<String, LineDiff> data) throws JsonProcessingException {
         return new ObjectMapper().writeValueAsString(data);
     }

@@ -5,7 +5,7 @@ import hexlet.code.LineDiff;
 
 import java.util.Map;
 
-public class Formatter {
+public final class Formatter {
     public static String formatting(Map<String, LineDiff> data, String format) throws JsonProcessingException {
         return switch (format) {
             case "stylish" -> Stylish.getFormatter(data);

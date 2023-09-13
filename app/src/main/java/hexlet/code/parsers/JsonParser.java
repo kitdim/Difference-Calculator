@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.json.JsonMapper;
 
 import java.nio.file.Path;
 
-public class JsonParser implements Parser {
+public final class JsonParser implements Parser {
     @Override
     public ObjectMapper parse(Path path) {
         return new JsonMapper();

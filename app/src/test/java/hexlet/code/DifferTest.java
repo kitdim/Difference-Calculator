@@ -14,11 +14,12 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 public class DifferTest {
-    static String expectStylish1 = "";
-    static String expectStylish2 = "";
-    static String expectPlain = "";
-    static String expectJson = "";
+    private static String expectStylish1 = "";
+    private static String expectStylish2 = "";
+    private static String expectPlain = "";
+    private static String expectJson = "";
 
+    /*Добавить тест на вызов метода generate без параметра format */
     @BeforeAll
     public static void initExpect() throws IOException {
         Path stylishPath1 = Paths.get("src/test/resources/Expect/stylishFile1.txt");

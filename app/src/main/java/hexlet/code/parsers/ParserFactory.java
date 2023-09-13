@@ -1,6 +1,6 @@
 package hexlet.code.parsers;
 
-public class ParserFactory {
+public final class ParserFactory {
     public static Parser getParser(String extension) {
         switch (extension) {
             case "json" -> {

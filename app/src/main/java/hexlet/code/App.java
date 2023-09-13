@@ -17,9 +17,9 @@ public class App implements Callable<Integer> {
             description = "output format [default: stylish]")
     private String format;
     @Parameters(index = "0", paramLabel = "filepath1", description = "path to first file")
-    String filepath1;
+    private String filepath1;
     @Parameters(index = "1", paramLabel = "filepath2", description = "path to second file")
-    String filepath2;
+    private String filepath2;
 
     @Override
     public Integer call() throws IOException {

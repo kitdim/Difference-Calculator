@@ -4,7 +4,7 @@ import hexlet.code.LineDiff;
 
 import java.util.Map;
 
-public class Stylish {
+public final class Stylish {
     public static String getFormatter(Map<String, LineDiff> data) {
         StringBuilder result = new StringBuilder("{\n");
         for (var item : data.entrySet()) {

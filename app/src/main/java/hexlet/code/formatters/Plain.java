@@ -6,7 +6,7 @@ import java.util.Objects;
 import hexlet.code.LineDiff;
 import org.apache.commons.lang3.StringUtils;
 
-public class Plain {
+public final class Plain {
     public static String getFormatter(Map<String, LineDiff> data) {
         StringBuilder result = new StringBuilder();
         for (var item : data.entrySet()) {

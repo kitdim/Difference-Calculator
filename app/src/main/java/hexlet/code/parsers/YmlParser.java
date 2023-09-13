@@ -5,7 +5,7 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 
 import java.nio.file.Path;
 
-public class YmlParser implements Parser {
+public final class YmlParser implements Parser {
     @Override
     public ObjectMapper parse(Path path) {
         return new YAMLMapper();

@@ -9,7 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Map;
 
-public class Differ {
+public final class Differ {
     public static String generate(String filepath1, String filepath2, String format) throws IOException {
         var extension = filepath1.split("\\.")[1];
         var path1 = Paths.get(filepath1).toAbsolutePath().normalize();

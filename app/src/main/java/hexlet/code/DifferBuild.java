@@ -6,7 +6,7 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-public class DifferBuild {
+public final class DifferBuild {
     public static Map<String, LineDiff> getDiffer(Map<String, Object> data1, Map<String, Object> data2) {
         Map<String, LineDiff> diff = new TreeMap<>();
         Set<String> keys = new TreeSet<>(data1.keySet());

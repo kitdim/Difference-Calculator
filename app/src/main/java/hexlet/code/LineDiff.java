@@ -1,6 +1,6 @@
 package hexlet.code;
 
-public class LineDiff {
+public final class LineDiff {
     private String status;
     private String key;
     private Object value1;
