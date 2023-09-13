@@ -16,31 +16,26 @@ public class Plain {
             var key = item.getValue().getKey();
             switch (status) {
                 case "changed" -> result.append("Property ")
-                        .append("'")
-                        .append(key)
-                        .append("'")
+                        .append(getValue(key))
                         .append(" was updated. From ")
                         .append(getValue(value1))
                         .append(" to ")
                         .append(getValue(value2))
                         .append("\n");
                 case "added" -> result.append("Property ")
-                        .append("'")
-                        .append(key)
-                        .append("'")
+                        .append(getValue(key))
                         .append(" was added with value: ")
                         .append(getValue(value2))
                         .append("\n");
                 case "remove" -> result.append("Property ")
-                        .append("'")
-                        .append(key).append("'")
+                        .append(getValue(key))
                         .append(" was removed")
                         .append("\n");
                 default -> {
                 }
             }
         }
-        return result.toString();
+        return result.toString().trim();
     }
 
     private static String getValue(Object value) {
