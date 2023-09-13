@@ -19,7 +19,6 @@ public class DifferTest {
     private static String expectPlain = "";
     private static String expectJson = "";
 
-    /*Добавить тест на вызов метода generate без параметра format */
     @BeforeAll
     public static void initExpect() throws IOException {
         Path stylishPath1 = Paths.get("src/test/resources/Expect/stylishFile1.txt");
