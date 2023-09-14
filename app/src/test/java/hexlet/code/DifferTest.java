@@ -44,6 +44,8 @@ public class DifferTest {
         filepath2 = "src/test/resources/Json/file4.json";
         actual = Differ.generate(filepath1, filepath2, "stylish");
         assertThat(actual).isEqualTo(expectStylish2);
+        actual  = Differ.generate(filepath1, filepath2);
+        assertThat(actual).isEqualTo(expectStylish2);
     }
     @Test
     public void plainTest() throws IOException {
