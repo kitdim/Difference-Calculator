@@ -1,10 +1,10 @@
 package hexlet.code.formatters;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
 import hexlet.code.LineDiff;
-import org.apache.commons.lang3.StringUtils;
 
 public final class Plain {
     public static String getFormatter(Map<String, LineDiff> data) {
@@ -38,16 +38,13 @@ public final class Plain {
         return result.toString().trim();
     }
 
-    private static String getValue(Object value) {
-        var tempVal = Objects.toString(value);
-        if (tempVal.charAt(0) == '[' && tempVal.charAt(tempVal.length() - 1) == ']'
-                || tempVal.charAt(0) == '{' && tempVal.charAt(tempVal.length() - 1) == '}') {
+    private static <T> String getValue(T value) {
+        if (value instanceof List || value instanceof Map) {
             return "[complex value]";
-        } else if (tempVal.equals("false") || tempVal.equals("true")
-                || tempVal.equals("null") || StringUtils.isNumeric(tempVal)) {
-            return tempVal;
-        } else {
+        } else if (value instanceof String) {
             return "'" + value + "'";
+        } else {
+            return Objects.toString(value);
         }
     }
 }
