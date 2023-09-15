@@ -1,5 +1,7 @@
-package hexlet.code.exercise;
+package hexlet.code;
 
+import hexlet.code.exercise.DataSupplier;
+import hexlet.code.exercise.DifferBuild;
 import hexlet.code.formatters.Formatter;
 
 public final class Differ {
