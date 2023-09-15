@@ -1,9 +1,9 @@
 package hexlet.code.parsers;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
-import java.nio.file.Path;
+import java.util.Map;
 
 public interface Parser {
-    ObjectMapper parse(Path path);
+    Map<String, Object> parse(String content) throws JsonProcessingException;
 }

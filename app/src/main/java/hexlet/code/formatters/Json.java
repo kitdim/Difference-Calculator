@@ -7,7 +7,11 @@ import hexlet.code.exercise.LineDiff;
 import java.util.Map;
 
 public final class Json {
-    public static String getFormatter(Map<String, LineDiff> data) throws JsonProcessingException {
-        return new ObjectMapper().writeValueAsString(data);
+    public static String getFormatter(Map<String, LineDiff> data) {
+        try {
+            return new ObjectMapper().writeValueAsString(data);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
