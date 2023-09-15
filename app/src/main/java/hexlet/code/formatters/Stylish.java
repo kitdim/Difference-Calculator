@@ -1,6 +1,6 @@
 package hexlet.code.formatters;
 
-import hexlet.code.LineDiff;
+import hexlet.code.exercise.LineDiff;
 
 import java.util.Map;
 

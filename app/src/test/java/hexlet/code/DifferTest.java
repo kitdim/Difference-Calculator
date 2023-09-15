@@ -10,6 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import hexlet.code.exercise.Differ;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 

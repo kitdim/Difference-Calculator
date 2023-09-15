@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import hexlet.code.LineDiff;
+import hexlet.code.exercise.LineDiff;
 
 public final class Plain {
     public static String getFormatter(Map<String, LineDiff> data) {

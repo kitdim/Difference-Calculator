@@ -1,4 +1,4 @@
-package hexlet.code;
+package hexlet.code.exercise;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import hexlet.code.formatters.Formatter;
