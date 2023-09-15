@@ -35,8 +35,9 @@ public class DifferTest {
     public static String read(Path filepath) throws IOException {
         return Files.readString(filepath);
     }
+
     @Test
-    public void stylishTest() throws IOException {
+    public void stylishTest() {
         String filepath1 = "src/test/resources/Json/file1.json";
         String filepath2 = "src/test/resources/Json/file2.json";
         String actual = Differ.generate(filepath1, filepath2, "stylish");
@@ -45,23 +46,26 @@ public class DifferTest {
         filepath2 = "src/test/resources/Json/file4.json";
         actual = Differ.generate(filepath1, filepath2, "stylish");
         assertThat(actual).isEqualTo(expectStylish2);
-        actual  = Differ.generate(filepath1, filepath2);
+        actual = Differ.generate(filepath1, filepath2);
         assertThat(actual).isEqualTo(expectStylish2);
     }
+
     @Test
-    public void plainTest() throws IOException {
+    public void plainTest() {
         String filepath1 = "src/test/resources/Json/file3.json";
         String filepath2 = "src/test/resources/Json/file4.json";
         String actual = Differ.generate(filepath1, filepath2, "plain");
         assertThat(actual).isEqualTo(expectPlain);
     }
+
     @Test
-    public void jsonTest() throws IOException {
+    public void jsonTest() {
         String filepath1 = "src/test/resources/Json/file3.json";
         String filepath2 = "src/test/resources/Json/file4.json";
         String actual = Differ.generate(filepath1, filepath2, "json");
         assertThat(actual).isEqualTo(expectJson);
     }
+
     @Test
     public void errorTestPath() {
         String filepath1 = "src/test/resources";
@@ -71,6 +75,7 @@ public class DifferTest {
         });
         assertNotNull(throwable.getMessage());
     }
+
     @Test
     public void errorTestFormat() {
         String filepath1 = "src/test/resources/Json/file3.json";
@@ -82,12 +87,13 @@ public class DifferTest {
         String actualMessage = exception.getMessage();
         assertTrue(actualMessage.contains(expectedMessage));
     }
+
     @Test
     public void errorTestExtension() {
-        String filepath1 = "src/test/resources/Json/file3.img";
-        String filepath2 = "src/test/resources/Json/file4.img";
+        String filepath1 = "src/test/resources/Other/file1.img";
+        String filepath2 = "src/test/resources/Other/file2.img";
         Exception exception = assertThrows(RuntimeException.class, () -> {
-            Differ.generate(filepath1, filepath2, "test");
+            Differ.generate(filepath1, filepath2, "stylish");
         });
         String expectedMessage = "img - not supported.";
         String actualMessage = exception.getMessage();
