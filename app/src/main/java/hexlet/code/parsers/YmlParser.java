@@ -9,13 +9,9 @@ import java.util.Map;
 
 public final class YmlParser implements Parser {
     @Override
-    public Map<String, Object> parse(String content) {
+    public Map<String, Object> parse(String content) throws JsonProcessingException {
         ObjectMapper mapper = new YAMLMapper();
-        try {
             return mapper.readValue(content, new TypeReference<>() {
             });
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
     }
 }
