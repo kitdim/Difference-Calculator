@@ -22,9 +22,13 @@ public final class App implements Callable<Integer> {
     private String filepath2;
 
     @Override
-    public Integer call() throws IOException {
-        var result = Differ.generate(filepath1, filepath2, format);
-        System.out.println(result);
+    public Integer call() {
+        try {
+            var result = Differ.generate(filepath1, filepath2, format);
+            System.out.println(result);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         return 0;
     }
 

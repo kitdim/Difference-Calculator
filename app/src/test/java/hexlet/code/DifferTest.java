@@ -36,7 +36,7 @@ public class DifferTest {
     }
 
     @Test
-    public void stylishTest() {
+    public void stylishTest() throws IOException {
         String filepath1 = "src/test/resources/Json/file1.json";
         String filepath2 = "src/test/resources/Json/file2.json";
         String actual = Differ.generate(filepath1, filepath2, "stylish");
@@ -50,7 +50,7 @@ public class DifferTest {
     }
 
     @Test
-    public void plainTest() {
+    public void plainTest() throws IOException {
         String filepath1 = "src/test/resources/Json/file3.json";
         String filepath2 = "src/test/resources/Json/file4.json";
         String actual = Differ.generate(filepath1, filepath2, "plain");
@@ -58,7 +58,7 @@ public class DifferTest {
     }
 
     @Test
-    public void jsonTest() {
+    public void jsonTest() throws IOException {
         String filepath1 = "src/test/resources/Json/file3.json";
         String filepath2 = "src/test/resources/Json/file4.json";
         String actual = Differ.generate(filepath1, filepath2, "json");

@@ -9,15 +9,10 @@ import java.nio.file.Paths;
 import java.util.Map;
 
 public final class DataSupplier {
-    public static Map<String, Object> getData(String filepath) {
+    public static Map<String, Object> getData(String filepath) throws IOException {
         String extension = filepath.split("\\.")[1];
         Path path = Paths.get(filepath).toAbsolutePath().normalize();
-        String content = null;
-        try {
-            content = Files.readString(path);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        String content = Files.readString(path);
         return ParserFactory.getParser(extension, content);
     }
 
