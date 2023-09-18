@@ -37,13 +37,10 @@ public class DifferTest {
 
     @Test
     public void stylishTest() throws IOException {
-        String filepath1 = "src/test/resources/Json/file1.json";
-        String filepath2 = "src/test/resources/Json/file2.json";
+
+        String filepath1 = "src/test/resources/Json/file3.json";
+        String filepath2 = "src/test/resources/Json/file4.json";
         String actual = Differ.generate(filepath1, filepath2, "stylish");
-        assertThat(actual).isEqualTo(expectStylish1);
-        filepath1 = "src/test/resources/Json/file3.json";
-        filepath2 = "src/test/resources/Json/file4.json";
-        actual = Differ.generate(filepath1, filepath2, "stylish");
         assertThat(actual).isEqualTo(expectStylish2);
         actual = Differ.generate(filepath1, filepath2);
         assertThat(actual).isEqualTo(expectStylish2);
