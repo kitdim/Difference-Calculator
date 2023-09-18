@@ -20,9 +20,9 @@ public class DifferTest {
 
     @BeforeAll
     public static void initExpect() throws IOException {
-        expectStylish = read("src/test/resources/Expect/stylishFile2.txt");
-        expectPlain = read("src/test/resources/Expect/plainFile1.txt");
-        expectJson = read("src/test/resources/Expect/jsonFile1.txt");
+        expectStylish = read("src/test/resources/expect/stylishFile1.txt");
+        expectPlain = read("src/test/resources/expect/plainFile1.txt");
+        expectJson = read("src/test/resources/expect/jsonFile1.txt");
     }
 
     public static String read(String filepath) throws IOException {
@@ -33,8 +33,8 @@ public class DifferTest {
     @Test
     public void stylishTest() throws IOException {
 
-        String filepath1 = "src/test/resources/Json/file3.json";
-        String filepath2 = "src/test/resources/Json/file4.json";
+        String filepath1 = "src/test/resources/json/file3.json";
+        String filepath2 = "src/test/resources/json/file4.json";
         String actual = Differ.generate(filepath1, filepath2, "stylish");
         assertThat(actual).isEqualTo(expectStylish);
         actual = Differ.generate(filepath1, filepath2);
@@ -43,16 +43,16 @@ public class DifferTest {
 
     @Test
     public void plainTest() throws IOException {
-        String filepath1 = "src/test/resources/Json/file3.json";
-        String filepath2 = "src/test/resources/Json/file4.json";
+        String filepath1 = "src/test/resources/json/file3.json";
+        String filepath2 = "src/test/resources/json/file4.json";
         String actual = Differ.generate(filepath1, filepath2, "plain");
         assertThat(actual).isEqualTo(expectPlain);
     }
 
     @Test
     public void jsonTest() throws IOException {
-        String filepath1 = "src/test/resources/Json/file3.json";
-        String filepath2 = "src/test/resources/Json/file4.json";
+        String filepath1 = "src/test/resources/json/file3.json";
+        String filepath2 = "src/test/resources/json/file4.json";
         String actual = Differ.generate(filepath1, filepath2, "json");
         assertThat(actual).isEqualTo(expectJson);
     }
@@ -69,8 +69,8 @@ public class DifferTest {
 
     @Test
     public void errorTestFormat() {
-        String filepath1 = "src/test/resources/Json/file3.json";
-        String filepath2 = "src/test/resources/Json/file4.json";
+        String filepath1 = "src/test/resources/json/file3.json";
+        String filepath2 = "src/test/resources/json/file4.json";
         Exception exception = assertThrows(RuntimeException.class, () -> {
             Differ.generate(filepath1, filepath2, "test");
         });
@@ -81,8 +81,8 @@ public class DifferTest {
 
     @Test
     public void errorTestExtension() {
-        String filepath1 = "src/test/resources/Other/file1.img";
-        String filepath2 = "src/test/resources/Other/file2.img";
+        String filepath1 = "src/test/resources/other/file1.img";
+        String filepath2 = "src/test/resources/other/file2.img";
         Exception exception = assertThrows(RuntimeException.class, () -> {
             Differ.generate(filepath1, filepath2, "stylish");
         });
