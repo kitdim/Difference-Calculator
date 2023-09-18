@@ -1,4 +1,4 @@
-package hexlet.code.exercise;
+package hexlet.code;
 
 import hexlet.code.parsers.ParserFactory;
 

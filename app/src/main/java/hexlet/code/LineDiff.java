@@ -1,4 +1,4 @@
-package hexlet.code.exercise;
+package hexlet.code;
 
 public final class LineDiff {
     private String status;
