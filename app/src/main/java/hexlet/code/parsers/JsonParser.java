@@ -11,8 +11,7 @@ public final class JsonParser implements Parser {
     @Override
     public Map<String, Object> parse(String content) throws JsonProcessingException {
         ObjectMapper mapper = new JsonMapper();
-            return mapper.readValue(content, new TypeReference<>() {
-            });
-
+        return mapper.readValue(content, new TypeReference<>() {
+        });
     }
 }
