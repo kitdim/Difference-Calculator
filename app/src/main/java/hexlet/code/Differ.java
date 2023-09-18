@@ -11,7 +11,7 @@ public final class Differ {
 
         var differ = DifferBuild.getDiffer(data1, data2);
 
-        return Formatter.formatting(differ, format);
+        return Formatter.format(differ, format);
     }
 
     public static String generate(String filepath1, String filepath2) throws IOException {
