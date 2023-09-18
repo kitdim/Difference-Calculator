@@ -14,25 +14,20 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 public class DifferTest {
-    private static String expectStylish1 = "";
-    private static String expectStylish2 = "";
+    private static String expectStylish = "";
     private static String expectPlain = "";
     private static String expectJson = "";
 
     @BeforeAll
     public static void initExpect() throws IOException {
-        Path stylishPath1 = Paths.get("src/test/resources/Expect/stylishFile1.txt");
-        Path stylishPath2 = Paths.get("src/test/resources/Expect/stylishFile2.txt");
-        Path plainPath = Paths.get("src/test/resources/Expect/plainFile1.txt");
-        Path jsonPath = Paths.get("src/test/resources/Expect/jsonFile1.txt");
-        expectStylish1 = read(stylishPath1);
-        expectStylish2 = read(stylishPath2);
-        expectPlain = read(plainPath);
-        expectJson = read(jsonPath);
+        expectStylish = read("src/test/resources/Expect/stylishFile2.txt");
+        expectPlain = read("src/test/resources/Expect/plainFile1.txt");
+        expectJson = read("src/test/resources/Expect/jsonFile1.txt");
     }
 
-    public static String read(Path filepath) throws IOException {
-        return Files.readString(filepath);
+    public static String read(String filepath) throws IOException {
+        Path path = Paths.get(filepath);
+        return Files.readString(path);
     }
 
     @Test
@@ -41,9 +36,9 @@ public class DifferTest {
         String filepath1 = "src/test/resources/Json/file3.json";
         String filepath2 = "src/test/resources/Json/file4.json";
         String actual = Differ.generate(filepath1, filepath2, "stylish");
-        assertThat(actual).isEqualTo(expectStylish2);
+        assertThat(actual).isEqualTo(expectStylish);
         actual = Differ.generate(filepath1, filepath2);
-        assertThat(actual).isEqualTo(expectStylish2);
+        assertThat(actual).isEqualTo(expectStylish);
     }
 
     @Test
