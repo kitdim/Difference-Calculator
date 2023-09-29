@@ -15,11 +15,9 @@ The result is displayed in the selected format "Stylish", "Plain" or "Json" form
    4. To get help, enter the command "-h".
 
 ## Example of work:
-### Example 7
-[![asciicast](https://asciinema.org/a/604905.svg)](https://asciinema.org/a/604905)
-### Example 8
+### Example Stylish
 [![asciicast](https://asciinema.org/a/605294.svg)](https://asciinema.org/a/605294)
-### Example 9
+### Example Plain
 [![asciicast](https://asciinema.org/a/605693.svg)](https://asciinema.org/a/605693)
-### Example 10
+### Example Json
 [![asciicast](https://asciinema.org/a/605983.svg)](https://asciinema.org/a/605983)
