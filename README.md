@@ -5,8 +5,8 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/bd38b1474a43a5fd696e/test_coverage)](https://codeclimate.com/github/kitdim/java-project-71/test_coverage)
 
 # Difference Calculator
-This console application compares two files, file format can be "json" or "yaml". 
-The result is displayed in the selected format "Stylish", "Plain" or "Json" formats.
+This is an application that determines the difference between two data structures (json, yaml). 
+Utility features: support for different input formats, report generation in the form of plain text, stylish and json.
 
 ### Start guide:
    1. Enter the location of the compiled application in the terminal(for example: ./build/install/app/bin/app)    
